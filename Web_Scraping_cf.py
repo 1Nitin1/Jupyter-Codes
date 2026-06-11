@@ -11,8 +11,8 @@ from typing import List
 import pandas as pd
 url="https://codeforces.com/contest/2234/standings"
 r=re.get(url)
+print(r)
 s=BeautifulSoup(r.text,'lxml')
-
 
 # In[11]:
 
