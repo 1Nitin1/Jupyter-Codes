@@ -44,3 +44,35 @@
 3. LIKE
 4. ILIKE
 5. DEFAULT
+
+### Task:1
+- create a table employee and use not null, default, primary key, Date, unique and serial.
+- Setting serial curval: select setval('emp_id_seq',2);
+
+
+## Clauses
+1. WHERE
+2. IN and NOT IN
+3. BETWEEN
+4. DISTINCT
+5. ORDER BY
+6. LIMIT
+7. LIKE and ILIKE
+
+## Aggregate Functions
+1. MAX
+2. MIN
+3. COUNT
+4. AVG
+5. SUM
+
+## OTHER KEYWORD
+1. GROUP BY
+
+## STRING FUNCTIONS
+1. CONCAT(str1,str2,...)
+2. CONCAT_WS('-',str1,str2,...)
+3. SUBSTR(str,start,end)
+4. REPLACE(str,from,to)
+5. LENGTH(str)
+6. 
