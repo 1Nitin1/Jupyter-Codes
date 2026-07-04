@@ -75,4 +75,52 @@
 3. SUBSTR(str,start,end)
 4. REPLACE(str,from,to)
 5. LENGTH(str)
-6. 
+6. REVERSE(str)
+7. UPPER(str)
+8. LOWER(str)
+9. LEFT(str, n)
+10. RIGHT(str, n)
+11. TRIM(str)
+12. POSITION(x in y)
+
+## Altering Tables
+1. Adding column: alter table tab_name add column ________;
+2. Remove column: alter table tab_name drop column col_name;
+3. Rename column: alter table tab_name rename column col_name to new_col_name;
+4. Rename table: alter table tab_name rename to table_name;
+   - OR
+   - rename table tab_name to table_name;
+
+## CHECK and CONSTRAINT
+1. CHECK is used for making custom checks like mobile no. length >=10.
+   - create table xyz(
+   - id int,
+   - mob varchar(20) unique check (length(mob)>=10)
+   - );
+2. We can also name it ourselves using CONSTRAINT:
+   - create table xyz(
+   - id int,
+   - mob varchar(20) unique,
+   - constraint my_check check (length(mob)>=10)
+   - );
+3. Adding constraint: alter table tab_name add constraint c_name check _____;
+4. Removing constraint: alter table tab_name drom constarint c_name;
+
+## CASE:
+1. used like if elif else:
+   -  select fname , salary,
+   -  case
+   -  when salary>=55000 then 'high'
+   -  when salary >=50000 then 'mid'
+   -  else 'low'
+   -  end as sal_cat
+   -  from employee;
+
+## FOREIGN KEY
+- Syntax:
+- foreign key (c_id) reference c_table(c_id);
+
+## JOINS
+- CROSS JOIN : select * from tab1_name cross join tab2_name;
+- INNER JOIN, LEFT JOIN, RIGHT JOIN: select * from tab1_name a inner join tab2_name b on a.id=b.id;
+
