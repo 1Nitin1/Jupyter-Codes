@@ -104,7 +104,7 @@
    - constraint my_check check (length(mob)>=10)
    - );
 3. Adding constraint: alter table tab_name add constraint c_name check _____;
-4. Removing constraint: alter table tab_name drom constarint c_name;
+4. Removing constraint: alter table tab_name drop constarint c_name;
 
 ## CASE:
 1. used like if elif else:
