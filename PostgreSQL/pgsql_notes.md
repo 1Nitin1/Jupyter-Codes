@@ -124,3 +124,40 @@
 - CROSS JOIN : select * from tab1_name cross join tab2_name;
 - INNER JOIN, LEFT JOIN, RIGHT JOIN: select * from tab1_name a inner join tab2_name b on a.id=b.id;
 
+## VIEWS
+- can save a query as a view: create view v_name as --QUERY--
+
+## Having and Rollup
+- Having is used with group by.
+- Rollup is used to create another total tuple. The null can be overridden using coalesce.
+
+## Stored Routine
+1. Stored procedure:
+   - CREATE OR REPLACE PROCEDURE pr_name (parameters)
+   - LANGUAGE pgplsql
+   - AS $$
+   - BEGIN
+   - - your query...
+   - END;
+   - $$;
+2. Stored function:
+   - CREATE OR REPLACE FUNCTION fn_name (parameters)
+   - RETURNS return_type AS $$
+   - BEGIN
+   - - your funtion...
+     - RETURN data;
+   - END;
+   - $$ LANGUAGE pgplsql;
+
+## CTE
+- Common Table Expression
+- Used to simplify queries
+- WITH t_name AS (
+- ...QUERY...
+- )
+
+## TRIGGER:
+- Used to automatically do some action if a particular thing happens.
+
+- CREATE OR REPLACE TRIGGER tri_name
+- {BEFORE | AFTER }
