@@ -5,54 +5,36 @@ public class Sol {
    public static void main(String[] args) throws Exception {
       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
       PrintWriter out = new PrintWriter(System.out);
-      StringTokenizer st;
-      int[][] board = new int[8][8];
-      for(int i=0;i<8;i++){
-         String s = br.readLine();
-         for(int j=0;j<8;j++){
-            if(s.charAt(j)=='*'){
-               board[i][j] = -1;
+      String s = br.readLine();
+      int[] count = new int[26];
+      for (int i = 0; i < s.length(); i++) {
+         count[s.charAt(i) - 'A']++;
+      }
+      int oddCount = 0;
+      char oddChar = ' ';
+      for (int i = 0; i < 26; i++) {
+         if (count[i] % 2 == 1) {
+            oddCount++;
+            oddChar = (char) (i + 'A');
+         }
+      }
+      if (oddCount > 1) {
+         out.println("NO SOLUTION");
+      } else {
+         StringBuilder half = new StringBuilder();
+         for (int i = 0; i < 26; i++) {
+            for (int j = 0; j < count[i] / 2; j++) {
+               half.append((char) (i + 'A'));
             }
          }
+         StringBuilder palindrome = new StringBuilder(half);
+         if (oddCount == 1) {
+            palindrome.append(oddChar);
+         }
+         palindrome.append(half.reverse());
+         out.println(palindrome);
       }
-      out.println(solve(board,0));
       out.flush();
    }
-   private static int solve(int[][] board,int row){
-      if(row==8){
-         return 1;
-      }
-      int ans = 0;
-      for(int col=0;col<8;col++){
-         if(board[row][col]<0){
-            continue;
-         }
-         for(int r=0;r<8;r++){
-            board[r][col]--;
-         }
-         for(int c=0;c<8;c++){
-            board[row][c]--;
-         }
-         for(int r=row,c=col;r<8 && c<8;r++,c++){
-            board[r][c]--;
-         }
-         for(int r=row,c=col;c>=0 && r<8;r++,c--){
-            board[r][c]--;
-         }
-         ans += solve(board,row+1);
-         for(int r=0;r<8;r++){
-            board[r][col]++;
-         }
-         for(int c=0;c<8;c++){
-            board[row][c]++;
-         }
-         for(int r=row,c=col;r<8 && c<8;r++,c++){
-            board[r][c]++;
-         }
-         for(int r=row,c=col;c>=0 && r<8;r++,c--){
-            board[r][c]++;
-         }
-      }
-      return ans;
-   }
+   
 }
