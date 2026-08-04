@@ -5,35 +5,23 @@ public class Sol {
    public static void main(String[] args) throws Exception {
       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
       PrintWriter out = new PrintWriter(System.out);
-      String s = br.readLine();
-      int[] count = new int[26];
-      for (int i = 0; i < s.length(); i++) {
-         count[s.charAt(i) - 'A']++;
-      }
-      int oddCount = 0;
-      char oddChar = ' ';
-      for (int i = 0; i < 26; i++) {
-         if (count[i] % 2 == 1) {
-            oddCount++;
-            oddChar = (char) (i + 'A');
+      long q = Long.parseLong(br.readLine());
+      while(q-- > 0) {
+         long a = Long.parseLong(br.readLine());
+         long idx=9;
+         long num = 9;
+         for(int i=1;i<19;i++){
+            if(idx>=a) break;
+            idx += Math.pow(10,i)*9*(i+1); 
+            num += Math.pow(10,i)*9; 
          }
+         int size=(int)Math.log10(num)+1;
+         long num2 = (num - (idx-a)/size);
+         int digit=(int)((idx-a)%size);
+         System.out.println(num2);
+         out.println(String.valueOf(num2).charAt(size-digit-1));
       }
-      if (oddCount > 1) {
-         out.println("NO SOLUTION");
-      } else {
-         StringBuilder half = new StringBuilder();
-         for (int i = 0; i < 26; i++) {
-            for (int j = 0; j < count[i] / 2; j++) {
-               half.append((char) (i + 'A'));
-            }
-         }
-         StringBuilder palindrome = new StringBuilder(half);
-         if (oddCount == 1) {
-            palindrome.append(oddChar);
-         }
-         palindrome.append(half.reverse());
-         out.println(palindrome);
-      }
+      
       out.flush();
    }
    
